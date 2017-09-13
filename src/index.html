@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./res/css/H-ui.reset.css"/>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <title></title>
+</head>
+<body>
+<style>
+    * {
+        transition-property: all;
+        -ms-transition-property: all;
+        -moz-transition-property: all;
+        -webkit-transition-property: all;
+        -o-transition-property: all;
+    }
+
+    #header {
+        width: 100%;
+        height: 88px;
+        background: #fff;
+        position: fixed;
+        top: 0;
+    }
+
+    #header .logo img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 60px
+    }
+
+    #header .nav_middle {
+        margin: 0 auto;
+    }
+
+    #header .nav_list {
+        position: relative;
+        margin: 0 auto;
+        height: 88px;
+        right: 0;
+    }
+
+    #header .nav_list li {
+        float: left;
+        line-height: 88px;
+        margin: 0 35px;
+        font-size: 18px;
+    }
+
+    #header .header_wrapper {
+        margin: 0 30px;
+    }
+
+    #header .nav_icon img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        right: 30px;
+        height: 28px;
+        transition-duration: .5s;
+        -ms-transition-duration: .5s;
+        -moz-transition-duration: .5s;
+        -webkit-transition-duration: .5s;
+    }
+
+    #header .wapBtnAn img {
+        transform: rotateZ(180deg);
+        -moz-transform: rotateZ(180deg);
+        -ms-transform: rotateZ(180deg);
+        -o-transform: rotateZ(180deg);
+        -webkit-transform: rotateZ(180deg);
+
+    }
+
+    .content-div {
+        height: 100px;
+        position: fixed;
+        background: red;
+        width: 100%;
+        top: -300px
+    }
+
+    .content-div .closeBtn {
+        position: absolute;
+        right: 10px;
+        top: 10px
+    }
+
+    #footer {
+        background: #23ade5;
+        color: #fff;
+        margin-top: 88px;
+        padding: 35px 0;
+        line-height: 30px;
+    }
+
+    #footer .footer_wrapper {
+        width: 960px;
+        margin: 0 auto;
+    }
+
+    #footer .footer_l {
+        float: left;
+        font-size: 14px;
+    }
+
+    #footer .footer_r {
+        float: right;
+        font-size: 14px;
+    }
+
+    #footer .footer_r a {
+        margin: 10px 20px 0 0;
+        display: inline-block;
+        width: 57px;
+        height: 57px;
+    }
+
+    #footer .footer_r a img {
+        width: 100%;
+    }
+
+    @media (min-width: 1440px) {
+        #header .nav_middle {
+            width: 1107px;
+        }
+
+        #header .nav_list {
+            width: 800px;
+            right: 0;
+        }
+    }
+
+    @media (max-width: 1439px) and (min-width: 1200px) {
+        #header .nav_middle {
+            width: 796px;
+        }
+
+        #header .nav_list li {
+            margin: 0 25px;
+        }
+
+        #header .nav_list {
+            width: 650px;
+            right: 0;
+        }
+
+        #header .logo img {
+            height: 44px
+        }
+
+        #header .nav_icon img {
+            transform: scale(0.83);
+            -moz-transform: scale(0.83);
+            -ms-transform: scale(0.83);
+            -o-transform: scale(0.83);
+            -webkit-transform: scale(0.83);
+        }
+
+        #header .nav_list li {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 1199px) and (min-width: 1024px) {
+        #header .nav_middle {
+            width: 796px;
+        }
+
+        #header .nav_list li {
+            margin: 0 25px;
+        }
+
+        #header .nav_list {
+            width: 580px;
+            right: 0;
+        }
+
+        #header .logo img {
+            height: 44px
+        }
+
+        #header .nav_list li {
+            font-size: 14px;
+        }
+
+        #header .nav_icon img {
+            transform: scale(0.83);
+            -moz-transform: scale(0.83);
+            -ms-transform: scale(0.83);
+            -o-transform: scale(0.83);
+            -webkit-transform: scale(0.83);
+        }
+    }
+
+    @media (max-width: 1023px) {
+        #header {
+            height: 75px;
+        }
+
+        #header .nav_middle {
+            display: none;
+        }
+
+        #header .nav_middle {
+            position: fixed;
+            top: 75px;
+            right: 0;
+            display: block;
+        }
+
+        #header .nav_list {
+            height: auto;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            border-right: 0;
+            border-bottom: 0;
+            width: 124px;
+        }
+
+        #header .nav_list.aaa {
+            right: -125px;
+        }
+
+        #header .nav_list li {
+            float: none;
+            line-height: 55px;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 1px solid #dcdcdc;
+            width: 124px;
+            margin: 0;
+        }
+
+        #footer {
+            margin-top: 75px;
+        }
+
+        #footer .footer_wrapper {
+            text-align: center;
+            width: 400px;
+        }
+
+        #footer .footer_l {
+            float: none;
+            font-size: 14px;
+        }
+
+        #footer .footer_l .company_addr, #footer .footer_l .company_tel, #footer .footer_r div:first-child {
+            display: none;
+        }
+
+        #footer .footer_r {
+            float: none;
+            font-size: 14px;
+        }
+
+        #footer .footer_r a {
+            margin: 10px 5px 0;
+        }
+    }
+</style>
+<!--头部S-->
+<div id="header">
+    <div class="header_wrapper">
+        <a href="/" class="logo">
+            <img src="http://7k999.kuboluo.com/res/images/112.png" alt=""/>
+        </a>
+
+        <div class="nav_middle">
+            <ul class="nav_list clearfix">
+                <li>首页</li>
+                <li>优势</li>
+                <li>案例</li>
+                <li>新元创想</li>
+                <li>动态</li>
+                <li>伙伴</li>
+                <li>联系</li>
+            </ul>
+        </div>
+        <div class="nav_icon">
+            <img src="http://7k999.kuboluo.com/res/images/navBtn.png" alt=""/>
+        </div>
+    </div>
+</div>
+<!--头部E-->
+<!--大屏点击显示联系我们S-->
+<div class="content-div">
+    <img src="http://7k999.kuboluo.com/res/images/closeIcon.png" alt="" class="closeBtn"/>
+</div>
+<!--大屏点击显示联系我们E-->
+<!--尾部S-->
+<div id="footer">
+    <div class="footer_wrapper clearfix">
+        <div class="footer_l">
+            <div class="company_name">技术有限公司</div>
+            <div>Copyright 2014－2016 7k999.com All Rights Reserved</div>
+            <div class="company_addr">Add：山东省青岛胶州宝龙城市广场A座2205</div>
+            <div class="company_tel">Tel:0532-86620102</div>
+        </div>
+        <div class="footer_r">
+            <div>关注我们</div>
+            <div>
+                <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
+                <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
+                <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--尾部E-->
+<script>
+    var w;
+    var click = true;
+    function change() {
+        w = $(window).width();
+        if (w < 1024) {
+            $(".content-div").stop(false, true).animate({top: "-300px"}, 8000);
+            $('.nav_list').css('right', '-125px');
+            $('.nav_icon').removeClass('wapBtnAn');
+
+        } else {
+            $('.nav_icon').removeClass('wapBtnAn');
+            $('.nav_list').css('right', '0');
+            click = true
+        }
+    }
+    $(function () {
+        change()
+    });
+    $(window).resize(function () {
+        change()
+    });
+    $('.nav_icon').click(function () {
+        w = $(window).width();
+        if (w < 1024) {
+            if (click) {
+                $(".nav_list").stop(false, true).animate({right: "0"}, 800);
+                $('.nav_icon').addClass('wapBtnAn');
+                click = false;
+            } else {
+                $(".nav_list").stop(false, true).animate({right: "-125px"}, 800);
+                $('.nav_icon').removeClass('wapBtnAn');
+                click = true;
+            }
+        } else {
+            $(".content-div").stop(false, true).animate({top: "0"}, 800);
+            $('.nav_icon').addClass('wapBtnAn');
+        }
+    });
+    $('.closeBtn').click(function () {
+        $(".content-div").stop(false, true).animate({top: "-300px"}, 800);
+        $('.nav_icon').removeClass('wapBtnAn');
+
+    })
+</script>
+</body>
+</html>
