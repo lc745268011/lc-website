@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--声明文档的兼容模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <!--移动设备-->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
     <link rel="stylesheet" href="./res/css/H-ui.reset.css"/>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <title></title>
@@ -78,11 +86,14 @@
     }
 
     .content-div {
-        height: 100px;
+        height: 300px;
         position: fixed;
         background: red;
         width: 100%;
-        top: -300px
+        top: -300px;
+        margin-top: 88px;
+        z-index: 99;
+
     }
 
     .content-div .closeBtn {
@@ -91,10 +102,17 @@
         top: 10px
     }
 
-    #banner .boxall {
+    #banner {
         position: relative;
+        height: auto;
+    }
+
+    #banner .boxall {
+        position: absolute;
+        left: 0;
+        top: 0;
         width: 100%;
-        height: 685px;
+        height: 100%;
         box-sizing: border-box;
         overflow: hidden;
         margin: auto;
@@ -102,7 +120,7 @@
     }
 
     #banner .box {
-        height: 681px;
+        height: 100%;
         background: #23ade5;
         text-align: center;
         box-sizing: border-box;
@@ -114,21 +132,27 @@
         opacity: 0;
         background-attachment: fixed;
         background-repeat: no-repeat;
-        background-position: center center;
+        background-size: 100% auto;
+        background-position: center 88px;
     }
 
     #banner .current_box {
         right: 0;
-        animation:myfirst 2s;
-        -moz-animation: myfirst 2s;	/* Firefox */
-        -webkit-animation: myfirst 2s;	/* Safari 和 Chrome */
-        -o-animation: myfirst 2s;	/* Opera */
+        animation: myfirst 2s;
+        -moz-animation: myfirst 2s; /* Firefox */
+        -webkit-animation: myfirst 2s; /* Safari 和 Chrome */
+        -o-animation: myfirst 2s; /* Opera */
     }
-    @keyframes myfirst
-    {
-        from {opacity: 0}
-        to {opacity: 1}
+
+    @keyframes myfirst {
+        from {
+            opacity: 0
+        }
+        to {
+            opacity: 1
+        }
     }
+
     #banner button.btn {
         background: transparent;
         border: 0;
@@ -150,7 +174,8 @@
     #banner .right {
         right: -75px
     }
-    #banner ul{
+
+    #banner ul {
         position: absolute;
         margin: 0 auto;
         bottom: 10px;
@@ -158,6 +183,7 @@
         left: 0;
         right: 0;
     }
+
     #banner ul li {
         width: 80px;
         height: 4px;
@@ -166,13 +192,87 @@
         cursor: pointer;
         display: inline-block;
 
-
     }
+
     #banner ul li.current {
-       background: #23ade5;
+        background: #23ade5;
     }
 
-    /*li{width: 100px;height: 20px;float: left;border: 1px solid #333}*/
+    #banner .bannerBg {
+        width: 100%;
+        height: auto;
+    }
+
+    .share_right {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 45px;
+    }
+
+    .share_right li {
+        height: 45px;
+        width: 45px;
+        line-height: 45px;
+        color: #fff;
+        text-align: center;
+        background: #04bbdf;
+        margin-bottom: 2px;
+        position: absolute;
+        right: 0;
+        overflow: hidden;
+        font-size: 14px;
+    }
+
+    .share_right li:hover {
+        transition-duration: .5s;
+        -ms-transition-duration: .5s;
+        -moz-transition-duration: .5s;
+        -webkit-transition-duration: .5s;
+    }
+
+    .share_right .share_top {
+        bottom: 141px;
+    }
+
+    .share_right .share_qq {
+        bottom: 94px;
+    }
+
+    .share_right .share_tel {
+        bottom: 47px;
+    }
+
+    .share_right .share_code {
+        bottom: 0;
+        margin-bottom: 0;
+    }
+
+    /*.share_right li span {*/
+         /*display: none;*/
+     /*}*/
+
+    .share_right li.share_qq p, .share_right li.share_tel p {
+        left: 45px;
+        position: absolute;
+    }
+
+    .share_right li.share_qq img, .share_right li.share_tel img {
+        left: 0;
+        position: absolute;
+    }
+
+    .share_right li.share_qq:hover {
+        width: 110px;
+        background: #333;
+    }
+
+    .share_right li.share_tel:hover {
+        width: 160px;
+        background: #333;
+        font-size: 14px;
+    }
+
 
     #footer {
         background: #23ade5;
@@ -281,6 +381,28 @@
         }
     }
 
+    @media (max-width: 1023px)and (min-width: 640px) {
+        #banner .box {
+            background-size: auto 600px;
+        }
+
+        #banner .bannerBg {
+            width: 100%;
+            height: 600px;
+        }
+    }
+
+    @media (max-width: 639px)and (min-width: 480px) {
+        #banner .box {
+            background-size: auto 450px;
+        }
+
+        #banner .bannerBg {
+            width: 100%;
+            height: 450px;
+        }
+    }
+
     @media (max-width: 1023px) {
         #header {
             height: 75px;
@@ -320,6 +442,34 @@
             margin: 0;
         }
 
+        .content-div {
+            margin-top: 75px;
+        }
+
+        #banner .boxall {
+            margin-top: 75px;
+        }
+
+        #banner .box {
+            background-position: center 75px;
+        }
+
+        #banner .left {
+            left: 10px;
+        }
+
+        #banner .right {
+            right: 10px;
+        }
+
+        #banner button.btn {
+            height: 74px;
+        }
+
+        #banner button.btn img {
+            height: 100%;
+        }
+
         #footer {
             margin-top: 75px;
         }
@@ -347,6 +497,58 @@
             margin: 10px 5px 0;
         }
     }
+
+    @media (max-width: 479px) {
+        #banner .left {
+            left: -75px;
+        }
+
+        #banner .box {
+            background-size: auto 450px;
+        }
+
+        #banner button.btn {
+            height: 37px;
+        }
+
+        #banner .right {
+            right: 5px;
+            text-align: right;
+        }
+
+        #banner .left {
+            left: 5px;
+            text-align: left;
+
+        }
+
+        #banner button.btn img {
+            height: 100%;
+        }
+
+        #banner .bannerBg {
+            width: 100%;
+            height: 450px;
+        }
+
+        #footer {
+            padding: 10px 0;
+        }
+
+        #footer .footer_wrapper {
+            width: 100%;
+        }
+
+        #footer .copyright {
+            font-size: 12px;
+        }
+
+        #footer .footer_r a {
+            width: 46px;
+            height: 46px;
+        }
+    }
+
 </style>
 <!--头部S-->
 <div id="header">
@@ -380,8 +582,11 @@
 <!--bannerS-->
 <div id="banner">
     <div class="boxall">
-        <div class="box current_box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1031029173.jpg');opacity: 1"></div>
-        <div class="box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1038164423.jpg')">2</div>
+        <div class="box current_box"
+             style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1031029173.jpg');opacity: 1"></div>
+        <div class="box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1038164423.jpg')">
+            2
+        </div>
         <button class="left btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerLeft.png" alt=""/></button>
         <button class="right btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerRight.png" alt=""/></button>
         <ul>
@@ -389,15 +594,33 @@
             <li></li>
         </ul>
     </div>
-
+    <img src="./res/img/bannerBg.jpg" alt="" class="bannerBg"/>
 </div>
 <!--bannerE-->
+<!--右侧分享E-->
+<ul class="share_right">
+    <li class="cl share_top">
+        TOP
+    </li>
+    <li class="cl share_qq">
+        <img src="http://7k999.kuboluo.com/res/images/fixed/QQ.png" alt=""/>
+        <p>QQ客服</p>
+    </li>
+    <li class="cl share_tel">
+        <img src="http://7k999.kuboluo.com/res/images/fixed/call.png" alt=""/>
+        <p>0532-86701888</p>
+    </li>
+    <li class="cl share_code">
+        <img src="http://7k999.kuboluo.com/res/images/fixed/code.png" alt=""/>
+    </li>
+</ul>
+<!--右侧分享S-->
 <!--尾部S-->
 <div id="footer">
     <div class="footer_wrapper clearfix">
         <div class="footer_l">
             <div class="company_name">技术有限公司</div>
-            <div>Copyright 2014－2016 7k999.com All Rights Reserved</div>
+            <div class="copyright">Copyright 2014－2016 7k999.com All Rights Reserved</div>
             <div class="company_addr">Add：山东省青岛胶州宝龙城市广场A座2205</div>
             <div class="company_tel">Tel:0532-86620102</div>
         </div>
@@ -428,12 +651,12 @@
         w = $(window).width();
         if (w < 1024) {
             $(".content-div").stop(false, true).animate({top: "-300px"}, 8000);
-            $('.nav_list').css('right', '-125px');
+            $('.nav_middle').css('right', '-125px');
             $('.nav_icon').removeClass('wapBtnAn');
 
         } else {
             $('.nav_icon').removeClass('wapBtnAn');
-            $('.nav_list').css('right', '0');
+            $('.nav_middle').css('right', '0');
             click = true
         }
     }
@@ -447,11 +670,11 @@
         w = $(window).width();
         if (w < 1024) {
             if (click) {
-                $(".nav_list").stop(false, true).animate({right: "0"}, 800);
+                $(".nav_middle").stop(false, true).animate({right: "0"}, 800);
                 $('.nav_icon').addClass('wapBtnAn');
                 click = false;
             } else {
-                $(".nav_list").stop(false, true).animate({right: "-125px"}, 800);
+                $(".nav_middle").stop(false, true).animate({right: "-125px"}, 800);
                 $('.nav_icon').removeClass('wapBtnAn');
                 click = true;
             }
