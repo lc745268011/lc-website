@@ -105,6 +105,7 @@
     #banner {
         position: relative;
         height: auto;
+        margin-top: 88px
     }
 
     #banner .boxall {
@@ -116,7 +117,6 @@
         box-sizing: border-box;
         overflow: hidden;
         margin: auto;
-        margin-top: 88px
     }
 
     #banner .box {
@@ -233,6 +233,7 @@
 
     .share_right .share_top {
         bottom: 141px;
+        display: none;
     }
 
     .share_right .share_qq {
@@ -247,10 +248,6 @@
         bottom: 0;
         margin-bottom: 0;
     }
-
-    /*.share_right li span {*/
-         /*display: none;*/
-     /*}*/
 
     .share_right li.share_qq p, .share_right li.share_tel p {
         left: 45px;
@@ -273,6 +270,40 @@
         font-size: 14px;
     }
 
+    .product_list {
+        width: 100%
+    }
+
+    .product_listbox {
+        width: 20%;
+        position: relative;
+        float: left
+    }
+
+    .product_listbox img {
+        width: 100%;
+    }
+
+    .product_listbox .product_info {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        background: #23ade5;
+        display: none;
+        opacity: 0;
+    }
+
+    .product_info > div {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        font-size: 16px
+    }
 
     #footer {
         background: #23ade5;
@@ -401,6 +432,10 @@
             width: 100%;
             height: 450px;
         }
+
+        #banner ul li {
+            width: 40px;
+        }
     }
 
     @media (max-width: 1023px) {
@@ -470,6 +505,10 @@
             height: 100%;
         }
 
+        .share_right {
+            display: none;
+        }
+
         #footer {
             margin-top: 75px;
         }
@@ -529,6 +568,10 @@
         #banner .bannerBg {
             width: 100%;
             height: 450px;
+        }
+
+        #banner ul li {
+            width: 40px;
         }
 
         #footer {
@@ -597,17 +640,63 @@
     <img src="./res/img/bannerBg.jpg" alt="" class="bannerBg"/>
 </div>
 <!--bannerE-->
+<!--锚点S-->
+<div>
+    <a href="#myAnchor" rel="" id="anchor1" class="anchorLink">这是一个锚点</a>
+</div>
+<!--锚点E-->
+<!--产品S-->
+<ul class="product_list">
+    <li class="product_listbox">
+        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+        <div class="product_info">
+            <div>aaa</div>
+        </div>
+    </li>
+    <li class="product_listbox">
+        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+        <div class="product_info">
+            <div>aaa</div>
+        </div>
+    </li>
+    <li class="product_listbox">
+        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+        <div class="product_info">
+            <div>aaa</div>
+        </div>
+    </li>
+    <li class="product_listbox">
+        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+        <div class="product_info">
+            <div>aaa</div>
+        </div>
+    </li>
+    <li class="product_listbox">
+        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+        <div class="product_info">
+            <div>aaa</div>
+        </div>
+    </li>
+</ul>
+<!--产品E-->
 <!--右侧分享E-->
 <ul class="share_right">
-    <li class="cl share_top">
+    <li class="cl share_top" id="share_top">
         TOP
     </li>
     <li class="cl share_qq">
         <img src="http://7k999.kuboluo.com/res/images/fixed/QQ.png" alt=""/>
+
         <p>QQ客服</p>
     </li>
     <li class="cl share_tel">
         <img src="http://7k999.kuboluo.com/res/images/fixed/call.png" alt=""/>
+
         <p>0532-86701888</p>
     </li>
     <li class="cl share_code">
@@ -617,6 +706,8 @@
 <!--右侧分享S-->
 <!--尾部S-->
 <div id="footer">
+    <a name="myAnchor" id="myAnchor"></a>
+
     <div class="footer_wrapper clearfix">
         <div class="footer_l">
             <div class="company_name">技术有限公司</div>
@@ -730,5 +821,64 @@
     });
 </script>
 <!--banner JS E-->
+<!--回到顶部S-->
+<script>
+    window.onload = function () {
+        var obtn = document.getElementById('share_top');
+        //获取页面可视区的高度
+        var clientHeight = document.documentElement.clientHeight;
+        var timer = null;
+        var isTop = true;
+
+        window.onscroll = function () {
+            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+            if (osTop >= clientHeight) {
+                obtn.style.display = "block"; //显示按钮
+            } else {
+                obtn.style.display = "none"; //隐藏按钮
+            }
+            if (!isTop) {
+                clearInterval(timer);
+            }
+            isTop = false;
+        };
+        obtn.onclick = function () {
+            //设置定时器
+            timer = setInterval(function () {
+                var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                var ispeed = Math.floor(-osTop / 6);
+                //获取滚动条距离顶部的高度
+                document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
+                isTop = true;
+                if (osTop == 0) {
+                    clearInterval(timer);
+                }
+            }, 30);
+        }
+
+    }
+</script>
+<!--回到顶部E-->
+<!--锚点S-->
+<script>
+    $('a').click(function () {
+        $('html, body').animate({
+            scrollTop: $($(this).attr('href')).offset().top
+        }, 500);
+        return false;
+    });
+</script>
+<!--锚点E-->
+<!--产品列表S-->
+<script>
+    $('.product_listbox').mouseover(function () {
+        $('.product_listbox .product_info').hide();
+        $(this).find('.product_info').animate({opacity: '0.8'}, 500).show();
+    }).mouseleave(function () {
+        $('.product_listbox .product_info').hide();
+        $(this).find('.product_info').animate({'opacity': 0}, 500).hide();
+    })
+</script>
+<!--产品列表E-->
 </body>
 </html>
