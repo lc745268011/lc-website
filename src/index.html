@@ -142,6 +142,7 @@
         -moz-animation: myfirst 2s; /* Firefox */
         -webkit-animation: myfirst 2s; /* Safari 和 Chrome */
         -o-animation: myfirst 2s; /* Opera */
+        opacity: 1;
     }
 
     @keyframes myfirst {
@@ -625,11 +626,8 @@
 <!--bannerS-->
 <div id="banner">
     <div class="boxall">
-        <div class="box current_box"
-             style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1031029173.jpg');opacity: 1"></div>
-        <div class="box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1038164423.jpg')">
-            2
-        </div>
+        <div class="box current_box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1031029173.jpg');"></div>
+        <div class="box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1038164423.jpg')"></div>
         <button class="left btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerLeft.png" alt=""/></button>
         <button class="right btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerRight.png" alt=""/></button>
         <ul>
@@ -646,7 +644,7 @@
 </div>
 <!--锚点E-->
 <!--产品S-->
-<ul class="product_list">
+<ul class="product_list clearfix">
     <li class="product_listbox">
         <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
 
@@ -796,21 +794,24 @@
         page = page - 1;
         if (page <= 0) {
             $('.box').removeClass('current_box').eq(pages - 1).addClass('current_box');
+            $('#banner ul li').removeClass('current').eq(pages - 1).addClass('current');
             page = pages;
         } else {
-            $('.box').removeClass('current_box').eq(page - 1).addClass('current_box')
+            $('.box').removeClass('current_box').eq(page - 1).addClass('current_box');
+            $('#banner ul li').removeClass('current').eq(page - 1).addClass('current');
         }
-        console.log(page);
+
     });
     $('.right').click(function () {
         page = page + 1;
         if (page > pages) {
             $('.box').removeClass('current_box').eq(0).addClass('current_box');
+            $('#banner ul li').removeClass('current').eq(0).addClass('current');
             page = 1;
         } else {
-            $('.box').removeClass('current_box').eq(page - 1).addClass('current_box')
+            $('.box').removeClass('current_box').eq(page - 1).addClass('current_box');
+            $('#banner ul li').removeClass('current').eq(pages- 1).addClass('current');
         }
-        console.log(page);
     });
     $('#banner ul li').click(function () {
         $('#banner ul li').removeClass('current');
@@ -819,6 +820,7 @@
         $('.boxall .box').removeClass('current_box').eq(current).addClass('current_box');
         page = current + 1;
     });
+    console.log($('#banner .boxall .box').index())
 </script>
 <!--banner JS E-->
 <!--回到顶部S-->
@@ -873,10 +875,10 @@
 <script>
     $('.product_listbox').mouseover(function () {
         $('.product_listbox .product_info').hide();
-        $(this).find('.product_info').animate({opacity: '0.8'}, 500).show();
+        $(this).find('.product_info').css('opacity', '0.8').fadeIn();
     }).mouseleave(function () {
         $('.product_listbox .product_info').hide();
-        $(this).find('.product_info').animate({'opacity': 0}, 500).hide();
+        $(this).find('.product_info').css('opacity', '0').fadeOut();
     })
 </script>
 <!--产品列表E-->
