@@ -12,6 +12,14 @@
           content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
     <link rel="stylesheet" href="./res/css/H-ui.reset.css"/>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="./res/js/jquery.nicescroll.min.js"></script>
+    <!--导航条S-->
+    <script>
+        $(document).ready(function () {
+            $("html").niceScroll();  // The document page (body)
+        });
+    </script>
+    <!--导航条E-->
     <title></title>
 </head>
 <body>
@@ -270,9 +278,83 @@
         background: #333;
         font-size: 14px;
     }
+    .textC {
+        position:relative;
+        /*width:500px;*/
+        overflow:hidden;
+        margin-top: 100px;
+        line-height:30px;
+        /*margin-left: 300px;*/
+        height:30px;
+        /*text-align: center;*/
+        margin: 50px 0;
+    }
+    .textC span {
+        font-size: 28px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        position: absolute;
+    }
 
     .product_list {
         width: 100%
+    }
+
+    .product_listbox1 {
+        float: left;
+        width: 20%;
+    }
+
+    .product_listbox1 a {
+        position: relative;
+        width: 100%;
+        display: inline-block;
+    }
+
+    .product_listbox1 img {
+        width: 100%;
+    }
+
+    .product_listbox1 .item_mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .3s ease-out;
+        transition: all .3s ease-out;
+        opacity: 0;
+        background: #000;
+    }
+
+    .product_listbox1 .xf_msg {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        margin: -25px 0 0 -25px;
+        background: url(//a.msstatic.com/huya/main/widget/game-live-item/img/play-icon_a180d27.png) no-repeat;
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transition: all ease-out 250ms;
+        transition: all ease-out 250ms;
+    }
+
+    .product_listbox1:hover .item_mask {
+        opacity: .5;
+        background: #000;
+        filter: alpha(opacity=50);
+    }
+
+    .product_listbox1:hover .xf_msg {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: scale(1);
+        transform: scale(1);
     }
 
     .product_listbox {
@@ -304,6 +386,30 @@
         width: 100%;
         text-align: center;
         font-size: 16px
+    }
+    .accordion_list{
+        margin: 0 -80px;
+        background: #000;
+        text-align: center;
+        font-size: 0;
+    }
+    .accordion_list li{
+        width: 17%;
+        height: 420px;
+        position: relative;
+        overflow: hidden;
+        -webkit-transform: skewX(-15deg);
+        transform: skewX(-15deg);
+        -ms-transform: skewX(-15deg);
+        display: inline-block;
+        letter-spacing: normal;
+        font-size: 16px;
+        margin-left: -.5%;
+        transition: width 1s;
+        -moz-transition: width 1s;
+        -webkit-transition: width 1s;
+        -o-transition: width 1s;
+        background-image: url(http://www.linked-media.com/wp-content/themes/total/images/about_info_bg1.jpg);
     }
 
     #footer {
@@ -595,292 +701,430 @@
 
 </style>
 <!--头部S-->
-<div id="header">
-    <div class="header_wrapper">
-        <a href="/" class="logo">
-            <img src="http://7k999.kuboluo.com/res/images/112.png" alt=""/>
-        </a>
+<div class="nicescroll-rails">
+    <div id="header">
+        <div class="header_wrapper">
+            <a href="/" class="logo">
+                <img src="http://7k999.kuboluo.com/res/images/112.png" alt=""/>
+            </a>
 
-        <div class="nav_middle">
-            <ul class="nav_list clearfix">
-                <li>首页</li>
-                <li>优势</li>
-                <li>案例</li>
-                <li>新元创想</li>
-                <li>动态</li>
-                <li>伙伴</li>
-                <li>联系</li>
-            </ul>
-        </div>
-        <div class="nav_icon">
-            <img src="http://7k999.kuboluo.com/res/images/navBtn.png" alt=""/>
-        </div>
-    </div>
-</div>
-<!--头部E-->
-<!--大屏点击显示联系我们S-->
-<div class="content-div">
-    <img src="http://7k999.kuboluo.com/res/images/closeIcon.png" alt="" class="closeBtn"/>
-</div>
-<!--大屏点击显示联系我们E-->
-<!--bannerS-->
-<div id="banner">
-    <div class="boxall">
-        <div class="box current_box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1031029173.jpg');"></div>
-        <div class="box" style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1038164423.jpg')"></div>
-        <button class="left btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerLeft.png" alt=""/></button>
-        <button class="right btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerRight.png" alt=""/></button>
-        <ul>
-            <li class="current"></li>
-            <li></li>
-        </ul>
-    </div>
-    <img src="./res/img/bannerBg.jpg" alt="" class="bannerBg"/>
-</div>
-<!--bannerE-->
-<!--锚点S-->
-<div>
-    <a href="#myAnchor" rel="" id="anchor1" class="anchorLink">这是一个锚点</a>
-</div>
-<!--锚点E-->
-<!--产品S-->
-<ul class="product_list clearfix">
-    <li class="product_listbox">
-        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
-
-        <div class="product_info">
-            <div>aaa</div>
-        </div>
-    </li>
-    <li class="product_listbox">
-        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
-
-        <div class="product_info">
-            <div>aaa</div>
-        </div>
-    </li>
-    <li class="product_listbox">
-        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
-
-        <div class="product_info">
-            <div>aaa</div>
-        </div>
-    </li>
-    <li class="product_listbox">
-        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
-
-        <div class="product_info">
-            <div>aaa</div>
-        </div>
-    </li>
-    <li class="product_listbox">
-        <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
-
-        <div class="product_info">
-            <div>aaa</div>
-        </div>
-    </li>
-</ul>
-<!--产品E-->
-<!--右侧分享E-->
-<ul class="share_right">
-    <li class="cl share_top" id="share_top">
-        TOP
-    </li>
-    <li class="cl share_qq">
-        <img src="http://7k999.kuboluo.com/res/images/fixed/QQ.png" alt=""/>
-
-        <p>QQ客服</p>
-    </li>
-    <li class="cl share_tel">
-        <img src="http://7k999.kuboluo.com/res/images/fixed/call.png" alt=""/>
-
-        <p>0532-86701888</p>
-    </li>
-    <li class="cl share_code">
-        <img src="http://7k999.kuboluo.com/res/images/fixed/code.png" alt=""/>
-    </li>
-</ul>
-<!--右侧分享S-->
-<!--尾部S-->
-<div id="footer">
-    <a name="myAnchor" id="myAnchor"></a>
-
-    <div class="footer_wrapper clearfix">
-        <div class="footer_l">
-            <div class="company_name">技术有限公司</div>
-            <div class="copyright">Copyright 2014－2016 7k999.com All Rights Reserved</div>
-            <div class="company_addr">Add：山东省青岛胶州宝龙城市广场A座2205</div>
-            <div class="company_tel">Tel:0532-86620102</div>
-        </div>
-        <div class="footer_r">
-            <div>关注我们</div>
-            <div>
-                <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
-                <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
-                <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
+            <div class="nav_middle">
+                <ul class="nav_list clearfix">
+                    <li>首页</li>
+                    <li>优势</li>
+                    <li>案例</li>
+                    <li>新元创想</li>
+                    <li>动态</li>
+                    <li>伙伴</li>
+                    <li>联系</li>
+                </ul>
+            </div>
+            <div class="nav_icon">
+                <img src="http://7k999.kuboluo.com/res/images/navBtn.png" alt=""/>
             </div>
         </div>
     </div>
-</div>
-<!--尾部E-->
-<script src="./res/js/jquery.nicescroll.min.js"></script>
-<!--导航条S-->
-<script>
-    $(document).ready(function () {
-        $("html").niceScroll();  // The document page (body)
-    });
-</script>
-<!--导航条E-->
-<!--响应式右上角导航S-->
-<script>
-    var w;
-    var click = true;
-    function change() {
-        w = $(window).width();
-        if (w < 1024) {
-            $(".content-div").stop(false, true).animate({top: "-300px"}, 8000);
-            $('.nav_middle').css('right', '-125px');
-            $('.nav_icon').removeClass('wapBtnAn');
+    <!--头部E-->
+    <!--大屏点击显示联系我们S-->
+    <div class="content-div">
+        <img src="http://7k999.kuboluo.com/res/images/closeIcon.png" alt="" class="closeBtn"/>
+    </div>
+    <!--大屏点击显示联系我们E-->
+    <!--bannerS-->
+    <div id="banner">
+        <div class="boxall">
+            <div class="box current_box"
+                 style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1031029173.jpg');"></div>
+            <div class="box"
+                 style="background-image: url('http://7k999.kuboluo.com/uploads/img/20170727/1038164423.jpg')"></div>
+            <button class="left btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerLeft.png" alt=""/>
+            </button>
+            <button class="right btn"><img src="http://7k999.kuboluo.com/res/images/index/bannerRight.png" alt=""/>
+            </button>
+            <ul>
+                <li class="current"></li>
+                <li></li>
+            </ul>
+        </div>
+        <img src="./res/img/bannerBg.jpg" alt="" class="bannerBg"/>
+    </div>
+    <!--bannerE-->
+    <!--锚点S-->
+    <div>
+        <a href="#myAnchor" rel="" id="anchor1" class="anchorLink">这是一个锚点</a>
+    </div>
+    <!--锚点E-->
+    <!--产品标题S-->
+    <div class="textC"></div>
+    <!--产品标题E-->
+    <!--产品S-->
+    <ul class="product_list clearfix">
+        <li class="product_listbox">
+            <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
 
-        } else {
-            $('.nav_icon').removeClass('wapBtnAn');
-            $('.nav_middle').css('right', '0');
-            click = true
-        }
-    }
-    $(function () {
-        change()
-    });
-    $(window).resize(function () {
-        change()
-    });
-    $('.nav_icon').click(function () {
-        w = $(window).width();
-        if (w < 1024) {
-            if (click) {
-                $(".nav_middle").stop(false, true).animate({right: "0"}, 800);
-                $('.nav_icon').addClass('wapBtnAn');
-                click = false;
-            } else {
-                $(".nav_middle").stop(false, true).animate({right: "-125px"}, 800);
+            <div class="product_info">
+                <div>aaa</div>
+            </div>
+        </li>
+        <li class="product_listbox">
+            <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+            <div class="product_info">
+                <div>aaa</div>
+            </div>
+        </li>
+        <li class="product_listbox">
+            <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+            <div class="product_info">
+                <div>aaa</div>
+            </div>
+        </li>
+        <li class="product_listbox">
+            <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+            <div class="product_info">
+                <div>aaa</div>
+            </div>
+        </li>
+        <li class="product_listbox">
+            <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+            <div class="product_info">
+                <div>aaa</div>
+            </div>
+        </li>
+    </ul>
+    <!--第二种产品-->
+    <ul class="product_list1 clearfix">
+        <li class="product_listbox1">
+            <a href="">
+                <img src="http://7k999.kuboluo.com/uploads/block/20170727/0929136662.jpg" alt=""/>
+
+                <div class="item_mask"></div>
+                <i class="xf_msg"></i>
+            </a>
+        </li>
+    </ul>
+    <!--产品E-->
+    <!--手风琴S-->
+    <ul class="accordion_list">
+        <li>
+            <div>
+                <div class="accordion_listMsg">
+                    <p>1</p>
+                    <p>22222</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <div class="accordion_listMsg">
+                    <p>1</p>
+                    <p>22222</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <div class="accordion_listMsg">
+                    <p>1</p>
+                    <p>22222</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <div class="accordion_listMsg">
+                    <p>1</p>
+                    <p>22222</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <div class="accordion_listMsg">
+                    <p>1</p>
+                    <p>22222</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <div class="accordion_listMsg">
+                    <p>1</p>
+                    <p>22222</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!--手风琴E-->
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <!--右侧分享E-->
+    <ul class="share_right">
+        <li class="cl share_top" id="share_top">
+            TOP
+        </li>
+        <li class="cl share_qq">
+            <img src="http://7k999.kuboluo.com/res/images/fixed/QQ.png" alt=""/>
+
+            <p>QQ客服</p>
+        </li>
+        <li class="cl share_tel">
+            <img src="http://7k999.kuboluo.com/res/images/fixed/call.png" alt=""/>
+
+            <p>0532-86701888</p>
+        </li>
+        <li class="cl share_code">
+            <img src="http://7k999.kuboluo.com/res/images/fixed/code.png" alt=""/>
+        </li>
+    </ul>
+    <!--右侧分享S-->
+    <!--尾部S-->
+    <div id="footer">
+        <a name="myAnchor" id="myAnchor"></a>
+
+        <div class="footer_wrapper clearfix">
+            <div class="footer_l">
+                <div class="company_name">技术有限公司</div>
+                <div class="copyright">Copyright 2014－2016 7k999.com All Rights Reserved</div>
+                <div class="company_addr">Add：山东省青岛胶州宝龙城市广场A座2205</div>
+                <div class="company_tel">Tel:0532-86620102</div>
+            </div>
+            <div class="footer_r">
+                <div>关注我们</div>
+                <div>
+                    <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
+                    <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
+                    <a href=""><img src="http://7k999.kuboluo.com/res/images/weiboIcon.png" alt=""/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--尾部E-->
+    <!--响应式右上角导航S-->
+    <script>
+        var w;
+        var click = true;
+        function change() {
+            w = $(window).width();
+            if (w < 1024) {
+                $(".content-div").stop(false, true).animate({top: "-300px"}, 8000);
+                $('.nav_middle').css('right', '-125px');
                 $('.nav_icon').removeClass('wapBtnAn');
-                click = true;
-            }
-        } else {
-            $(".content-div").stop(false, true).animate({top: "0"}, 800);
-            $('.nav_icon').addClass('wapBtnAn');
-        }
-    });
-    $('.closeBtn').click(function () {
-        $(".content-div").stop(false, true).animate({top: "-300px"}, 800);
-        $('.nav_icon').removeClass('wapBtnAn');
 
-    })
-</script>
-<!--响应式右上角导航E-->
-<!--banner JS S-->
-<script>
-    $('.boxall').mouseover(function () {
-        $('.left').animate({"left": "15px"}, 300);
-        $('.right').animate({"right": "15px"}, 300);
-    }).mouseleave(function () {
-        $('.left').animate({"left": "-75px"}, 300);
-        $('.right').animate({"right": "-75px"}, 300);
-    });
-    var page = 0;
-    var pages = $('.box').length;
-    $('.left').click(function () {
-        page = page - 1;
-        if (page <= 0) {
-            $('.box').removeClass('current_box').eq(pages - 1).addClass('current_box');
-            $('#banner ul li').removeClass('current').eq(pages - 1).addClass('current');
-            page = pages;
-        } else {
-            $('.box').removeClass('current_box').eq(page - 1).addClass('current_box');
-            $('#banner ul li').removeClass('current').eq(page - 1).addClass('current');
-        }
-
-    });
-    $('.right').click(function () {
-        page = page + 1;
-        if (page > pages) {
-            $('.box').removeClass('current_box').eq(0).addClass('current_box');
-            $('#banner ul li').removeClass('current').eq(0).addClass('current');
-            page = 1;
-        } else {
-            $('.box').removeClass('current_box').eq(page - 1).addClass('current_box');
-            $('#banner ul li').removeClass('current').eq(pages- 1).addClass('current');
-        }
-    });
-    $('#banner ul li').click(function () {
-        $('#banner ul li').removeClass('current');
-        $(this).addClass('current');
-        var current = $(this).index();
-        $('.boxall .box').removeClass('current_box').eq(current).addClass('current_box');
-        page = current + 1;
-    });
-    console.log($('#banner .boxall .box').index())
-</script>
-<!--banner JS E-->
-<!--回到顶部S-->
-<script>
-    window.onload = function () {
-        var obtn = document.getElementById('share_top');
-        //获取页面可视区的高度
-        var clientHeight = document.documentElement.clientHeight;
-        var timer = null;
-        var isTop = true;
-
-        window.onscroll = function () {
-            var osTop = document.documentElement.scrollTop || document.body.scrollTop;
-            if (osTop >= clientHeight) {
-                obtn.style.display = "block"; //显示按钮
             } else {
-                obtn.style.display = "none"; //隐藏按钮
+                $('.nav_icon').removeClass('wapBtnAn');
+                $('.nav_middle').css('right', '0');
+                click = true
             }
-            if (!isTop) {
-                clearInterval(timer);
+        }
+        $(function () {
+            change()
+        });
+        $(window).resize(function () {
+            change()
+        });
+        $('.nav_icon').click(function () {
+            w = $(window).width();
+            if (w < 1024) {
+                if (click) {
+                    $(".nav_middle").stop(false, true).animate({right: "0"}, 800);
+                    $('.nav_icon').addClass('wapBtnAn');
+                    click = false;
+                } else {
+                    $(".nav_middle").stop(false, true).animate({right: "-125px"}, 800);
+                    $('.nav_icon').removeClass('wapBtnAn');
+                    click = true;
+                }
+            } else {
+                $(".content-div").stop(false, true).animate({top: "0"}, 800);
+                $('.nav_icon').addClass('wapBtnAn');
             }
-            isTop = false;
-        };
-        obtn.onclick = function () {
-            //设置定时器
-            timer = setInterval(function () {
+        });
+        $('.closeBtn').click(function () {
+            $(".content-div").stop(false, true).animate({top: "-300px"}, 800);
+            $('.nav_icon').removeClass('wapBtnAn');
+
+        })
+    </script>
+    <!--响应式右上角导航E-->
+    <!--banner JS S-->
+    <script>
+        $('.boxall').mouseover(function () {
+            $('.left').animate({"left": "15px"}, 300);
+            $('.right').animate({"right": "15px"}, 300);
+        }).mouseleave(function () {
+            $('.left').animate({"left": "-75px"}, 300);
+            $('.right').animate({"right": "-75px"}, 300);
+        });
+        var page = 0;
+        var pages = $('.box').length;
+        $('.left').click(function () {
+            page = page - 1;
+            if (page <= 0) {
+                $('.box').removeClass('current_box').eq(pages - 1).addClass('current_box');
+                $('#banner ul li').removeClass('current').eq(pages - 1).addClass('current');
+                page = pages;
+            } else {
+                $('.box').removeClass('current_box').eq(page - 1).addClass('current_box');
+                $('#banner ul li').removeClass('current').eq(page - 1).addClass('current');
+            }
+
+        });
+        $('.right').click(function () {
+            page = page + 1;
+            if (page > pages) {
+                $('.box').removeClass('current_box').eq(0).addClass('current_box');
+                $('#banner ul li').removeClass('current').eq(0).addClass('current');
+                page = 1;
+            } else {
+                $('.box').removeClass('current_box').eq(page - 1).addClass('current_box');
+                $('#banner ul li').removeClass('current').eq(pages - 1).addClass('current');
+            }
+        });
+        $('#banner ul li').click(function () {
+            $('#banner ul li').removeClass('current');
+            $(this).addClass('current');
+            var current = $(this).index();
+            $('.boxall .box').removeClass('current_box').eq(current).addClass('current_box');
+            page = current + 1;
+        });
+        console.log($('#banner .boxall .box').index())
+    </script>
+    <!--banner JS E-->
+    <!--回到顶部S-->
+    <script>
+        window.onload = function () {
+            var obtn = document.getElementById('share_top');
+            //获取页面可视区的高度
+            var clientHeight = document.documentElement.clientHeight;
+            var timer = null;
+            var isTop = true;
+
+            window.onscroll = function () {
                 var osTop = document.documentElement.scrollTop || document.body.scrollTop;
-                var ispeed = Math.floor(-osTop / 6);
-                //获取滚动条距离顶部的高度
-                document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
-                isTop = true;
-                if (osTop == 0) {
+                if (osTop >= clientHeight) {
+                    obtn.style.display = "block"; //显示按钮
+                } else {
+                    obtn.style.display = "none"; //隐藏按钮
+                }
+                if (!isTop) {
                     clearInterval(timer);
                 }
-            }, 30);
-        }
+                isTop = false;
+            };
+            obtn.onclick = function () {
+                //设置定时器
+                timer = setInterval(function () {
+                    var osTop = document.documentElement.scrollTop || document.body.scrollTop;
+                    var ispeed = Math.floor(-osTop / 6);
+                    //获取滚动条距离顶部的高度
+                    document.documentElement.scrollTop = document.body.scrollTop = osTop + ispeed;
+                    isTop = true;
+                    if (osTop == 0) {
+                        clearInterval(timer);
+                    }
+                }, 30);
+            }
 
-    }
-</script>
-<!--回到顶部E-->
-<!--锚点S-->
-<script>
-    $('a').click(function () {
-        $('html, body').animate({
-            scrollTop: $($(this).attr('href')).offset().top
-        }, 500);
-        return false;
-    });
-</script>
-<!--锚点E-->
-<!--产品列表S-->
-<script>
-    $('.product_listbox').mouseover(function () {
-        $('.product_listbox .product_info').hide();
-        $(this).find('.product_info').css('opacity', '0.8').fadeIn();
-    }).mouseleave(function () {
-        $('.product_listbox .product_info').hide();
-        $(this).find('.product_info').css('opacity', '0').fadeOut();
-    })
-</script>
-<!--产品列表E-->
+        }
+    </script>
+    <!--回到顶部E-->
+    <!--锚点S-->
+    <script>
+        $('a').click(function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
+            return false;
+        });
+    </script>
+    <!--锚点E-->
+    <!--产品标题数字跳动S-->
+    <script type="text/javascript">
+        $(function(){
+            NumbersAnimate.Target=$(".textC");
+            NumbersAnimate.Numbers=1238911623;
+            NumbersAnimate.Duration=1500;
+            NumbersAnimate.Animate();
+        });
+        $(window).resize(function(){
+            var array=NumbersAnimate.Numbers.toString().split("");
+            var width = (array.length)*18;
+            var window_width = document.body.clientWidth;
+            var left = (window_width-width)/2;
+            $('.textC').css('margin-left',left);
+        });
+        var NumbersAnimate={
+            Target:null,
+            Numbers:0,
+            Duration:500,
+            Animate:function(){
+                var array=NumbersAnimate.Numbers.toString().split("");
+                var width = (array.length)*18;
+                var window_width = document.body.clientWidth;
+                var left = (window_width-width)/2;
+                $('.textC').css('margin-left',left);
+                //遍历数组
+                for(var i=0;i<array.length;i++){
+                    var currentN=array[i];
+                    //数字append进容器
+                    var t=$("<span></span>");
+                    $(t).append("<span class=\"childNumber\">"+array[i]+"</span>");
+                    $(t).css("margin-left",18*i+"px");
+                    $(NumbersAnimate.Target).append(t);
+                    //生成滚动数字,根据当前数字大小来定
+                    for(var j=0;j<=currentN;j++){
+                        var tt;
+                        if(j==currentN){
+                            tt=$("<span class=\"main\"><span>"+j+"</span></span>");
+                        }else{
+                            tt=$("<span class=\"childNumber\">"+j+"</span>");
+                        }
+                        $(t).append(tt);
+                        $(tt).css("margin-top",(j+1)*25+"px");
+                    }
+                    $(t).animate({marginTop:-((parseInt(currentN)+1)*25)+"px"},NumbersAnimate.Duration,function(){
+                        $(this).find(".childNumber").remove();
+                    });
+                }
+            }
+        }
+    </script>
+    <!--产品标题数字跳动E-->
+    <!--产品列表S-->
+    <script>
+        $('.product_listbox').mouseover(function () {
+            $('.product_listbox .product_info').hide();
+            $(this).find('.product_info').css('opacity', '0.8').fadeIn();
+        }).mouseleave(function () {
+            $('.product_listbox .product_info').hide();
+            $(this).find('.product_info').css('opacity', '0').fadeOut();
+        })
+    </script>
+    <!--产品列表E-->
+</div>
 </body>
 </html>
