@@ -8,12 +8,14 @@
     <meta name="author" content=""/>
     <!--移动设备-->
     <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta name="viewport"
-          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
     <link rel="stylesheet" href="./res/css/H-ui.reset.css"/>
+    <link rel="stylesheet" href="./res/css/font-awesome.css"/>
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--滑动列表-->
+    <script src="./res/js/slide_str.js"></script>
+    <!--滚动条S-->
     <script src="./res/js/jquery.nicescroll.min.js"></script>
-    <!--导航条S-->
     <script>
         $(document).ready(function () {
             $("html").niceScroll();  // The document page (body)
@@ -30,6 +32,11 @@
         -moz-transition-property: all;
         -webkit-transition-property: all;
         -o-transition-property: all;
+    }
+
+    @font-face {
+        font-family: MyriadPro-LightCond;
+        src: url('./res/font/MyriadPro-LightCond.woff');
     }
 
     #header {
@@ -278,20 +285,22 @@
         background: #333;
         font-size: 14px;
     }
+
     .textC {
-        position:relative;
+        position: relative;
         /*width:500px;*/
-        overflow:hidden;
+        overflow: hidden;
         margin-top: 100px;
-        line-height:30px;
+        line-height: 30px;
         /*margin-left: 300px;*/
-        height:30px;
+        height: 30px;
         /*text-align: center;*/
         margin: 50px 0;
     }
+
     .textC span {
         font-size: 28px;
-        font-family: Georgia, "Times New Roman", Times, serif;
+        font-family: 'MyriadPro-LightCond';
         position: absolute;
     }
 
@@ -387,13 +396,20 @@
         text-align: center;
         font-size: 16px
     }
-    .accordion_list{
+
+    .accordion {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .accordion_list {
         margin: 0 -80px;
         background: #000;
         text-align: center;
         font-size: 0;
     }
-    .accordion_list li{
+
+    .accordion_list li {
         width: 17%;
         height: 420px;
         position: relative;
@@ -409,9 +425,142 @@
         -moz-transition: width 1s;
         -webkit-transition: width 1s;
         -o-transition: width 1s;
-        background-image: url(http://www.linked-media.com/wp-content/themes/total/images/about_info_bg1.jpg);
     }
 
+    .accordion_listMsg {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        color: #fff;
+        left: -75px;
+        right: -75px;
+        bottom: 0;
+        -webkit-transform: skewX(15deg);
+        transform: skewX(15deg);
+        -ms-transform: skewX(15deg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        z-index: -999;
+    }
+
+    .accordion_listMsg div {
+        position: absolute;
+        top: 50%;
+        color: #fff;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .accordion_listMsg div p:last-child {
+        display: none;
+    }
+
+    .accordion_list li:hover .accordion_listMsg div p:last-child {
+        display: block;
+    }
+
+    .accordion_list li:hover .accordion_listMsg div p:first-child {
+        display: none;
+    }
+
+    .accordion_listMsg:nth-child(1) {
+        background-image: url(http://www.linked-media.com/wp-content/themes/total/images/about_info_bg1.jpg);
+    }
+    .su-accordion .su-spoiler {
+        margin-bottom: 0.5em;
+    }
+    .su-spoiler-style-default > .su-spoiler-title {
+        padding-left: 40px !important;
+        font-size: 14px;
+    }
+    .su-spoiler-title {
+        position: relative;
+        cursor: pointer;
+        min-height: 20px;
+        line-height: 20px;
+        padding: 7px 7px 7px 34px;
+        font-weight: bold;
+        font-size: 13px;
+    }
+    .su-spoiler-closed .su-spoiler-title, .su-spoiler-icon-plus.su-spoiler-closed .su-spoiler-icon::before {
+        color: #000000;
+    }
+    .su-spoiler-title, .su-spoiler-icon-plus .su-spoiler-icon::before {
+        color: #ffffff;
+    }
+    .su-spoiler-icon {
+        position: absolute;
+        left: 7px;
+        top: 7px;
+        display: block;
+        width: 20px;
+        height: 20px;
+        line-height: 21px;
+        text-align: center;
+        font-size: 14px;
+        font-family: FontAwesome;
+        font-weight: normal;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+    }
+    .su-spoiler-icon-plus .su-spoiler-icon::before {
+        font-family: FontAwesome;
+        content: "\f205" !important;
+        padding: 0 0 0 15px !important;
+        position: relative;
+        top: 5px;
+    }
+    .su-spoiler-icon-plus.su-spoiler-closed .su-spoiler-icon::before {
+        font-family: FontAwesome;
+        content: "\f204" !important;
+    }
+    .su-spoiler-style-default > .su-spoiler-content {
+        padding-left: 0 !important;
+        line-height: 24px;
+        font-size: 12px;
+        color: #666666;
+    }
+    .su-spoiler-content {
+        padding: 14px;
+        -webkit-transition: padding-top .2s;
+        -moz-transition: padding-top .2s;
+        -o-transition: padding-top .2s;
+        transition: padding-top .2s;
+        -ie-transition: padding-top .2s;
+    }
+    .su-spoiler-style-default > .su-spoiler-content {
+        padding-left: 0 !important;
+        line-height: 24px;
+        font-size: 12px;
+        color: #666666;
+    }
+    .su-spoiler-closed .su-spoiler-title {
+        background-color: #f6f6f6;
+    }
+    .su-spoiler-title {
+        font-weight: 300 !important;
+        padding: 13px !important;
+    }
+    .su-spoiler-title {
+        background-color: #2097ba;
+    }
+    .su-spoiler-closed .su-spoiler-title {
+        border-left: 5px solid #2097ba;
+    }
+    .su-spoiler.su-spoiler-closed > .su-spoiler-content {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        border: none;
+        opacity: 0;
+    }
     #footer {
         background: #23ade5;
         color: #fff;
@@ -616,6 +765,10 @@
             display: none;
         }
 
+        .product_listbox, .product_listbox1 {
+            width: 33.3%;
+        }
+
         #footer {
             margin-top: 75px;
         }
@@ -808,57 +961,116 @@
     </ul>
     <!--产品E-->
     <!--手风琴S-->
-    <ul class="accordion_list">
-        <li>
-            <div>
+    <div class="accordion">
+        <ul class="accordion_list">
+            <li>
                 <div class="accordion_listMsg">
-                    <p>1</p>
-                    <p>22222</p>
+                    <div>
+                        <p>1</p>
+
+                        <p>建立联系后，我们将发送文档资料并邀请您参与后续的培训课程。</p>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li>
-            <div>
+            </li>
+            <li>
                 <div class="accordion_listMsg">
-                    <p>1</p>
-                    <p>22222</p>
+                    <div>
+                        <p>1</p>
+
+                        <p>建立联系后，我们将发送文档资料并邀请您参与后续的培训课程。</p>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li>
-            <div>
+            </li>
+            <li>
                 <div class="accordion_listMsg">
-                    <p>1</p>
-                    <p>22222</p>
+                    <div>
+                        <p>1</p>
+
+                        <p>建立联系后，我们将发送文档资料并邀请您参与后续的培训课程。</p>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li>
-            <div>
+            </li>
+            <li>
                 <div class="accordion_listMsg">
-                    <p>1</p>
-                    <p>22222</p>
+                    <div>
+                        <p>1</p>
+
+                        <p>建立联系后，我们将发送文档资料并邀请您参与后续的培训课程。</p>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li>
-            <div>
+            </li>
+            <li>
                 <div class="accordion_listMsg">
-                    <p>1</p>
-                    <p>22222</p>
+                    <div>
+                        <p>1</p>
+
+                        <p>建立联系后，我们将发送文档资料并邀请您参与后续的培训课程。</p>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li>
-            <div>
+            </li>
+            <li>
                 <div class="accordion_listMsg">
-                    <p>1</p>
-                    <p>22222</p>
+                    <div>
+                        <p>1</p>
+
+                        <p>建立联系后，我们将发送文档资料并邀请您参与后续的培训课程。</p>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
     <!--手风琴E-->
+    <!--滑动列表S-->
+    <div class="su-accordion">
+        <div class="su-spoiler su-spoiler-style-default su-spoiler-icon-plus 0">
+            <div class="su-spoiler-title"><span class="su-spoiler-icon"></span>领英服务介绍
+            </div>
+            <div class="su-spoiler-content su-clearfix">
+                <p>
+                    服务内容按照您所选择的套餐形式而有所不同。通常而言，服务包含领英平台上品牌驻地的建设（公司主页及产品/服务专区）、驻地维护（实时资讯动态）及推广计划（各式广告推广）的制作三大环节。另外，我们将定期循环为您提供专业的技能知识培训，以方便您更好地了解并使用领英，拓宽市场获得。</p>
+
+                <p>针对服务中详细的驻地维护频率及广告形式，可至页面顶端“<span style="color: #ff0000;">服务</span>”栏进行查看；关于服务中各环节的详细介绍，可至页面顶端“<span
+                        style="color: #ff0000;">培训中心</span>”栏进行了解与学习。</p>
+
+            </div>
+        </div>
+        <div class="su-spoiler su-spoiler-style-default su-spoiler-icon-plus su-spoiler-closed">
+            <div class="su-spoiler-title"><span class="su-spoiler-icon"></span>领英能帮我们做的
+            </div>
+            <div class="su-spoiler-content su-clearfix">
+                <p>
+                    关于服务板块，我们可为您提供套餐服务各环节中的图片制作、中外文案编辑、推广计划制定、数据报告分析等服务。在此期间，Linked-media的专业策划团队、投放团队、设计团队及外籍优化团队将竭诚为您服务，解答您在服务中产生的任何疑问并给出我们专业的指导和建议。</p>
+
+                <p>
+                    关于学习培训版块，Linked-Media的培训师团队不仅可为您提供领英实时新技能的操作培训，同时，我们将为依据国内外关于海外营销、新媒体营销、品牌形象建立及规划等方面的最新报告，结合服务中所了解的特殊难题和情况，为您提供专属指导，开拓思路。</p>
+
+            </div>
+        </div>
+        <div class="su-spoiler su-spoiler-style-default su-spoiler-icon-plus su-spoiler-closed">
+            <div class="su-spoiler-title"><span class="su-spoiler-icon"></span>领英到底能为我带来什么？
+            </div>
+            <div class="su-spoiler-content su-clearfix">
+                <p>领英是链接国内外市场的重要平台，不仅是其全球覆盖量及会员优质度为试图打开国际市场的各企业、政府提供了重要的形象驻地及宣传推广平台，是目前<span
+                        style="font-family: arial, helvetica, sans-serif;">BTOB</span>采购的重要途径。</p>
+                <p>同时，领英是许多国际<span style="font-family: arial, helvetica, sans-serif;">500</span>强高管及政府发展采购人员的询盘、招聘、采购重要渠道，在领英上的形象将决定着合作意愿的强弱度。
+                </p>
+
+            </div>
+        </div>
+        <div class="su-spoiler su-spoiler-style-default su-spoiler-icon-plus su-spoiler-closed">
+            <div class="su-spoiler-title"><span class="su-spoiler-icon"></span>你们能帮我做什么？
+            </div>
+            <div class="su-spoiler-content su-clearfix">
+                <p>
+                    关于服务板块，我们可为您提供套餐服务各环节中的图片制作、中外文案编辑、推广计划制定、数据报告分析等服务。在此期间，Linked-media的专业策划团队、投放团队、设计团队及外籍优化团队将竭诚为您服务，解答您在服务中产生的任何疑问并给出我们专业的指导和建议。</p>
+
+                <p>
+                    关于学习培训版块，Linked-Media的培训师团队不仅可为您提供领英实时新技能的操作培训，同时，我们将为依据国内外关于海外营销、新媒体营销、品牌形象建立及规划等方面的最新报告，结合服务中所了解的特殊难题和情况，为您提供专属指导，开拓思路。</p>
+
+            </div>
+        </div>
+    </div>
+    <!--滑动列表E-->
     <br/>
     <br/>
     <br/>
@@ -1064,49 +1276,49 @@
     <!--锚点E-->
     <!--产品标题数字跳动S-->
     <script type="text/javascript">
-        $(function(){
-            NumbersAnimate.Target=$(".textC");
-            NumbersAnimate.Numbers=1238911623;
-            NumbersAnimate.Duration=1500;
+        $(function () {
+            NumbersAnimate.Target = $(".textC");
+            NumbersAnimate.Numbers = 1238911623;
+            NumbersAnimate.Duration = 1500;
             NumbersAnimate.Animate();
         });
-        $(window).resize(function(){
-            var array=NumbersAnimate.Numbers.toString().split("");
-            var width = (array.length)*18;
+        $(window).resize(function () {
+            var array = NumbersAnimate.Numbers.toString().split("");
+            var width = (array.length) * 18;
             var window_width = document.body.clientWidth;
-            var left = (window_width-width)/2;
-            $('.textC').css('margin-left',left);
+            var left = (window_width - width) / 2;
+            $('.textC').css('margin-left', left);
         });
-        var NumbersAnimate={
-            Target:null,
-            Numbers:0,
-            Duration:500,
-            Animate:function(){
-                var array=NumbersAnimate.Numbers.toString().split("");
-                var width = (array.length)*18;
+        var NumbersAnimate = {
+            Target: null,
+            Numbers: 0,
+            Duration: 500,
+            Animate: function () {
+                var array = NumbersAnimate.Numbers.toString().split("");
+                var width = (array.length) * 18;
                 var window_width = document.body.clientWidth;
-                var left = (window_width-width)/2;
-                $('.textC').css('margin-left',left);
+                var left = (window_width - width) / 2;
+                $('.textC').css('margin-left', left);
                 //遍历数组
-                for(var i=0;i<array.length;i++){
-                    var currentN=array[i];
+                for (var i = 0; i < array.length; i++) {
+                    var currentN = array[i];
                     //数字append进容器
-                    var t=$("<span></span>");
-                    $(t).append("<span class=\"childNumber\">"+array[i]+"</span>");
-                    $(t).css("margin-left",18*i+"px");
+                    var t = $("<span></span>");
+                    $(t).append("<span class=\"childNumber\">" + array[i] + "</span>");
+                    $(t).css("margin-left", 18 * i + "px");
                     $(NumbersAnimate.Target).append(t);
                     //生成滚动数字,根据当前数字大小来定
-                    for(var j=0;j<=currentN;j++){
+                    for (var j = 0; j <= currentN; j++) {
                         var tt;
-                        if(j==currentN){
-                            tt=$("<span class=\"main\"><span>"+j+"</span></span>");
-                        }else{
-                            tt=$("<span class=\"childNumber\">"+j+"</span>");
+                        if (j == currentN) {
+                            tt = $("<span class=\"main\"><span>" + j + "</span></span>");
+                        } else {
+                            tt = $("<span class=\"childNumber\">" + j + "</span>");
                         }
                         $(t).append(tt);
-                        $(tt).css("margin-top",(j+1)*25+"px");
+                        $(tt).css("margin-top", (j + 1) * 25 + "px");
                     }
-                    $(t).animate({marginTop:-((parseInt(currentN)+1)*25)+"px"},NumbersAnimate.Duration,function(){
+                    $(t).animate({marginTop: -((parseInt(currentN) + 1) * 25) + "px"}, NumbersAnimate.Duration, function () {
                         $(this).find(".childNumber").remove();
                     });
                 }
@@ -1125,6 +1337,17 @@
         })
     </script>
     <!--产品列表E-->
+    <!--手风琴S-->
+    <script>
+        $('.accordion_list li').mouseenter(function () {
+            $('.accordion_list li').css('width', '12%');
+            $(this).css('width', '40%');
+        })
+        $('.accordion_list li').mouseleave(function () {
+            $('.accordion_list li').css('width', '17%');
+        })
+    </script>
+    <!--手风琴E-->
 </div>
 </body>
 </html>
