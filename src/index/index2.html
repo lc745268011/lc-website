@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--声明文档的兼容模式-->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <!--移动设备-->
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta name="viewport"
+          content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+    <link rel="stylesheet" href="../res/css/H-ui.reset.css"/>
+    <link rel="stylesheet" href="../res/css/font-awesome.css"/>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--滑动列表-->
+    <script src="../res/js/slide_str.js"></script>
+    <!--滚动条S-->
+    <script src="../res/js/jquery.nicescroll.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("html").niceScroll();  // The document page (body)
+        });
+    </script>
+    <!--导航条E-->
+    <title></title>
+</head>
+<body>
+<style>
+    .top {
+        width: 7.5rem;
+        position: relative;
+        overflow-x: auto;
+        height: 2.5rem;
+
+    }
+
+    .topNav {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .topNav li {
+        width: 2.5rem;
+        float: left;
+        height: 2.5rem;
+        background: red;
+        color: #fff;
+        text-align: center;
+        line-height: 2.5rem;
+    }
+
+    .bottom {
+        width: 7.5rem;
+        overflow-x: auto;
+        position: relative;
+    }
+
+    .bottomBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .bottomBox div {
+        float: left;
+        width: 7.5rem;
+    }
+</style>
+<!--上部滑动列表-->
+<div class="top">
+    <ul class="topNav cl">
+        <li class="current">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+</div>
+
+<!--下部滑动列表-->
+<div class="bottom">
+    <div class="bottomBox">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+</div>
+
+<script>
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+<script>
+    var num1 = $('.topNav li').length;
+    var w = num1 * 2.5;
+    var w1 = num1 * 7.5;
+    var h = $(window).height() - $('.topNav').height();
+    var pageCurrent = $(this).index();
+    var slideCurrent=0;
+    $('.topNav').width(w + 'rem');
+    $('.topNav').css('min-width', w + 'rem');
+    $('.bottomBox').width(w1 + 'rem');
+    $('.bottom').height(h);
+    $('.bottomBox').css('min-width', w1 + 'rem');
+    $('.topNav li').click(function () {
+        $('.topNav li').eq(pageCurrent).addClass('current');
+        $('.bottomBox').animate({'left': -pageCurrent * 7.5 + 'rem'}, 500);
+    });
+</script>
+</body>
+</html>
